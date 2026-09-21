@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DeployDiff</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand"><i>↯</i> DeployDiff</div>
+      <span class="local">● LOCAL WORKSPACE</span>
+    </header>
+    <main>
+      <section class="hero">
+        <span>DEPLOYMENT CONFIGURATION REVIEW</span>
+        <h1>Know what changed<br />before you deploy.</h1>
+        <p>
+          Upload a release artifact and compare its configuration with your last
+          working deployment. Fix problems directly in the review workspace.
+        </p>
+      </section>
+      <section class="workflow">
+        <div class="step active">1 <b>Upload</b></div>
+        <div class="line"></div>
+        <div class="step">2 <b>Review changes</b></div>
+        <div class="line"></div>
+        <div class="step">3 <b>Export config</b></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Upload deployment inputs</h2>
+            <p>
+              The application artifact is retained locally for deployment
+              traceability. Configs are analyzed on this machine.
+            </p>
+          </div>
+          <button id="example" class="quiet">Load sample</button>
+        </div>
+        <form id="uploadForm">
+          <div class="file-grid">
+            <label class="drop"
+              ><input
+                id="application"
+                type="file"
+                accept=".zip,.tar,.gz,.jar,.war,.tgz"
+              /><strong>Application artifact <em>optional</em></strong
+              ><small>ZIP, TAR, JAR, WAR or package file</small
+              ><output id="appName">Choose application file</output></label
+            ><label class="drop"
+              ><input
+                id="baselineFile"
+                type="file"
+                accept=".env,.json,.yaml,.yml,.txt"
+              /><strong>Last successful config <em>optional</em></strong
+              ><small>Your known-good baseline</small
+              ><output id="baseName">Choose baseline config</output></label
+            ><label class="drop important"
+              ><input
+                id="candidateFile"
+                type="file"
+                accept=".env,.json,.yaml,.yml,.txt"
+              /><strong>Current deploy config</strong
+              ><small>The configuration to validate</small
+              ><output id="candidateName">Choose current config</output></label
+            >
+          </div>
+          <details>
+            <summary>Or paste configuration text</summary>
+            <div class="editor-grid">
+              <label
+                >Last successful<textarea
+                  id="baselineText"
+                  placeholder="APP_ENV=production&#10;DATABASE_URL=...&#10;REPLICAS=2"
+                ></textarea></label
+              ><label
+                >Current deployment<textarea
+                  id="candidateText"
+                  placeholder="Paste .env, JSON, or YAML-style key/value config"
+                ></textarea>
+              </label>
+            </div>
+          </details>
+          <div class="run">
+            <span id="status"
+              >Supported: .env, JSON, and basic YAML key/value
+              configuration</span
+            ><button id="analyse" type="submit">Analyze deployment →</button>
+          </div>
+        </form>
+      </section>
+      <section id="report" hidden>
+        <div class="report-title">
+          <div>
+            <span>ANALYSIS COMPLETE</span>
+            <h2 id="resultTitle">Deployment report</h2>
+            <p id="resultSummary"></p>
+          </div>
+          <button id="download" class="quiet">Download edited config</button>
+        </div>
+        <div id="metrics" class="metrics"></div>
+        <div class="report-grid">
+          <div>
+            <h3>Configuration changes</h3>
+            <div id="changes"></div>
+          </div>
+          <aside>
+            <h3>Validation</h3>
+            <div id="validations"></div>
+            <h3 class="editor-label">Edit candidate config</h3>
+            <textarea id="editConfig"></textarea
+            ><button id="reanalyze" class="full">Re-analyze edits</button>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer>
+      Configuration data stays on your local DeployDiff server. Do not use this
+      MVP to store production secrets on a shared machine.
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

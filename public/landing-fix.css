@@ -1,0 +1,19 @@
+.mysql {
+  grid-template-columns: minmax(245px, 0.8fr) minmax(0, 1.2fr);
+  gap: 40px;
+}
+.mysql form {
+  align-content: start;
+  grid-auto-rows: min-content;
+}
+.mysql form button {
+  height: 44px;
+}
+.mysql output {
+  margin-top: 5px;
+}
+@media (max-width: 720px) {
+  .mysql {
+    grid-template-columns: 1fr;
+  }
+}

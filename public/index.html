@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DeployDiff — Ship with confidence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="landing">
+    <nav class="landing-nav">
+      <a class="brand" href="/">↯ <span>DeployDiff</span></a>
+      <div>
+        <a href="#capabilities">Platform</a><a href="#mysql">Connectivity</a
+        ><a class="nav-cta" href="/workspace.html">Open workspace →</a>
+      </div>
+    </nav>
+    <main>
+      <section class="landing-hero">
+        <div>
+          <span class="pill">DEPLOYMENT INTELLIGENCE FOR MODERN TEAMS</span>
+          <h1>Every environment.<br /><i>Exactly in sync.</i></h1>
+          <p>
+            DeployDiff finds the configuration drift, infrastructure mismatch,
+            and connection issues that cause deployments to fail.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="/workspace.html"
+              >Analyze a deployment →</a
+            ><a class="secondary-link" href="#mysql">Test MySQL connection</a>
+          </div>
+        </div>
+        <div class="terminal">
+          <div class="dots">
+            <b></b><b></b><b></b><span>deploydiff / production</span>
+          </div>
+          <p><span>$</span> deploydiff check --env production</p>
+          <p class="ok">✓ Environment parity: 94%</p>
+          <p class="warn">! 3 critical configuration changes</p>
+          <p class="neutral">↳ DATABASE_SSL&nbsp;&nbsp; true → false</p>
+          <p class="neutral">
+            ↳ REPLICAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 → 0
+          </p>
+          <p class="ok">✓ Kubernetes manifest validated</p>
+        </div>
+      </section>
+      <section id="capabilities" class="capabilities">
+        <article>
+          <div class="icon blue">≋</div>
+          <span>01 — ENVIRONMENT PARITY</span>
+          <h2>Stop configuration drift.</h2>
+          <p>
+            Compare a known-good release against the next deployment across
+            development, staging, and production. Understand exactly which
+            setting changed and why it matters.
+          </p>
+          <ul>
+            <li>Baseline-versus-candidate config diffs</li>
+            <li>Secret-aware reports with masked values</li>
+            <li>Critical-change policy signals</li>
+          </ul>
+        </article>
+        <article>
+          <div class="icon purple">⬡</div>
+          <span>02 — KUBERNETES READY</span>
+          <h2>Make every manifest deployable.</h2>
+          <p>
+            Bring application configuration, replica counts, image tags, ports,
+            and resources into one pre-deploy review workflow.
+          </p>
+          <ul>
+            <li>Detect unsafe replica and port values</li>
+            <li>Review image and resource changes</li>
+            <li>Export a corrected deployment config</li>
+          </ul>
+        </article>
+      </section>
+      <section id="mysql" class="mysql">
+        <div>
+          <span class="pill">DATABASE CONNECTIVITY</span>
+          <h2>Verify MySQL before the release window.</h2>
+          <p>
+            Test the database connection from the same local DeployDiff service
+            that performs your pre-deployment analysis.
+          </p>
+          <p class="small">
+            The test credentials are prefilled for your local development server
+            and are never saved by DeployDiff.
+          </p>
+        </div>
+        <form id="mysqlForm">
+          <label>Host<input id="mysqlHost" value="127.0.0.1" /></label
+          ><label>Port<input id="mysqlPort" type="number" value="3306" /></label
+          ><label>Username<input id="mysqlUser" value="root" /></label
+          ><label
+            >Password<input
+              id="mysqlPass"
+              type="password"
+              value="root" /></label
+          ><button>Test connection →</button
+          ><output id="mysqlResult">Ready to test local MySQL.</output>
+        </form>
+      </section>
+      <section class="bottom-cta">
+        <span>READY TO DEPLOY?</span>
+        <h2>Find the change before it finds you.</h2>
+        <a class="primary-link" href="/workspace.html"
+          >Open deployment workspace →</a
+        >
+      </section>
+    </main>
+    <footer>
+      DeployDiff MVP · Local configuration analysis · Built for safer
+      deployments
+    </footer>
+    <script src="landing.js"></script>
+  </body>
+</html>

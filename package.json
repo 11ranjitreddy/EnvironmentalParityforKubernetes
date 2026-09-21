@@ -1,0 +1,12 @@
+{
+  "name": "deploydiff",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local deployment configuration drift detector",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

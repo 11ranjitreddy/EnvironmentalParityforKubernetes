@@ -1,0 +1,184 @@
+[
+  {
+    "id": "edd131ff-9fbe-45d9-bfcf-76bef261550a",
+    "createdAt": "2026-09-21T14:25:40.162Z",
+    "application": null,
+    "summary": {
+      "total": 14,
+      "added": 14,
+      "removed": 0,
+      "changed": 0,
+      "critical": 13
+    },
+    "baselineText": "",
+    "candidateText": "# Intentionally unsafe configuration for testing DeployDiff\r\n# APP_ENV is deliberately missing\r\n\r\nDATABASE_HOST=prod-db.internal\r\nDATABASE_PORT=99999\r\nDATABASE_SSL=false\r\nDATABASE_URL=postgres://orders-user:unsafe-password@prod-db.internal:5432/orders\r\n\r\nSERVICE_PORT=70000\r\nREPLICAS=0\r\nAPI_TIMEOUT=60000\r\nLOG_LEVEL=debug\r\n\r\nIMAGE_TAG=latest\r\nMEMORY_LIMIT=64Mi\r\nCPU_LIMIT=10m\r\n\r\nPAYMENT_API_KEY=test-key-that-should-be-masked\r\nJWT_SECRET=weak-demo-secret\r\nREDIS_URL=redis://cache.internal:6379\r\n"
+  },
+  {
+    "id": "f579460a-0f69-4cdf-94a1-7cdde4d86064",
+    "createdAt": "2026-09-21T14:21:17.146Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://prod-a\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret\r\nLOG_LEVEL=info\r\nREPLICAS=2",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://prod-b\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSENTRY_DSN=https://logs.example"
+  },
+  {
+    "id": "23b404a3-f80c-4ee9-a5f8-10b95ef8ea10",
+    "createdAt": "2026-09-21T14:20:33.791Z",
+    "application": null,
+    "summary": {
+      "total": 7,
+      "added": 0,
+      "removed": 0,
+      "changed": 7,
+      "critical": 7
+    },
+    "baselineText": "APP_ENV=staging\r\nDATABASE_HOST=staging-db.internal\r\nDATABASE_PORT=5432\r\nDATABASE_SSL=true\r\nREDIS_URL=redis://staging-cache:6379\r\nSERVICE_PORT=8080\r\nREPLICAS=3\r\nMEMORY_LIMIT=512Mi\r\nIMAGE_TAG=v2.4.1\r\nJWT_SECRET=staging-old-secret",
+    "candidateText": "APP_ENV=staging\r\nDATABASE_HOST=production-db.internal\r\nDATABASE_PORT=5432\r\nDATABASE_SSL=false\r\nREDIS_URL=redis://staging-cache:6379\r\nSERVICE_PORT=70000\r\nREPLICAS=0\r\nMEMORY_LIMIT=128Mi\r\nIMAGE_TAG=v2.5.0\r\nJWT_SECRET=staging-new-secret"
+  },
+  {
+    "id": "7c22614a-0e04-4a7a-abb7-e0828a98f6cc",
+    "createdAt": "2026-09-21T13:57:45.472Z",
+    "application": null,
+    "summary": {
+      "total": 7,
+      "added": 0,
+      "removed": 0,
+      "changed": 7,
+      "critical": 7
+    },
+    "baselineText": "APP_ENV=staging\r\nDATABASE_HOST=staging-db.internal\r\nDATABASE_PORT=5432\r\nDATABASE_SSL=true\r\nREDIS_URL=redis://staging-cache:6379\r\nSERVICE_PORT=8080\r\nREPLICAS=3\r\nMEMORY_LIMIT=512Mi\r\nIMAGE_TAG=v2.4.1\r\nJWT_SECRET=staging-old-secret",
+    "candidateText": "APP_ENV=staging\r\nDATABASE_HOST=production-db.internal\r\nDATABASE_PORT=5432\r\nDATABASE_SSL=false\r\nREDIS_URL=redis://staging-cache:6379\r\nSERVICE_PORT=70000\r\nREPLICAS=0\r\nMEMORY_LIMIT=128Mi\r\nIMAGE_TAG=v2.5.0\r\nJWT_SECRET=staging-new-secret"
+  },
+  {
+    "id": "fbb1c0d2-1d0d-45ba-87db-0778ffc9a966",
+    "createdAt": "2026-09-21T13:57:21.495Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "3ed9a802-a95a-498d-ba09-052341e18ca0",
+    "createdAt": "2026-09-21T13:57:19.136Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "1d239e00-fbf8-4953-b981-e9827d310595",
+    "createdAt": "2026-09-21T13:57:18.839Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "82f438df-ce81-4db5-a016-a4be7c4d13f7",
+    "createdAt": "2026-09-21T13:57:18.475Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "625f2637-96b0-428d-b2dc-6c78e13ec4f3",
+    "createdAt": "2026-09-21T13:57:18.253Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "ad9ffc6b-63ed-4d2f-853b-b49d437223bf",
+    "createdAt": "2026-09-21T13:57:17.450Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "8745c60c-a534-4f44-b430-fb094bd486a8",
+    "createdAt": "2026-09-21T13:57:14.519Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-1:5432/orders\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret-key\r\nLOG_LEVEL=info\r\nREPLICAS=2\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://db-prod-2:5432/orders\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret-key\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSERVICE_PORT=8080\r\nFEATURE_PAYMENTS=true\r\nSENTRY_DSN=https://example@sentry.io/123"
+  },
+  {
+    "id": "83fd22c6-2fc1-4379-8359-2ebd1498a9d6",
+    "createdAt": "2026-09-21T13:56:13.773Z",
+    "application": null,
+    "summary": {
+      "total": 6,
+      "added": 1,
+      "removed": 0,
+      "changed": 5,
+      "critical": 4
+    },
+    "baselineText": "APP_ENV=production\r\nDATABASE_URL=postgres://prod-a\r\nAPI_TIMEOUT=3000\r\nPAYMENT_API_KEY=old-secret\r\nLOG_LEVEL=info\r\nREPLICAS=2",
+    "candidateText": "APP_ENV=production\r\nDATABASE_URL=postgres://prod-b\r\nAPI_TIMEOUT=10000\r\nPAYMENT_API_KEY=new-secret\r\nLOG_LEVEL=debug\r\nREPLICAS=1\r\nSENTRY_DSN=https://logs.example"
+  },
+  {
+    "id": "b13c7c22-5fd6-407f-92c2-677862bfa2f0",
+    "createdAt": "2026-09-21T04:21:26.439Z",
+    "application": null,
+    "summary": {
+      "total": 2,
+      "added": 1,
+      "removed": 1,
+      "changed": 0,
+      "critical": 1
+    },
+    "baselineText": "APP_ENV=production",
+    "candidateText": "REPLICAS=0"
+  }
+]
